@@ -1,0 +1,7 @@
+:host {
+  @apply flex items-center pl-4;
+
+  .mdc-snackbar__label {
+    @apply pl-2 mt-0.5;
+  }
+}

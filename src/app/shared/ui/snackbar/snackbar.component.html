@@ -1,0 +1,18 @@
+<span class="w-6 h-6 text-[var(--mdc-snackbar-supporting-text-color)]">
+  <mat-icon>{{ icon }}</mat-icon>
+</span>
+<span matSnackBarLabel>{{ data.message }}</span>
+<span matSnackBarAction>
+  <!-- <button mat-icon-button matSnackBarAction>
+    <mat-icon>close</mat-icon>
+  </button> -->
+  <button
+    mat-icon-button
+    matSnackBarAction
+    (click)="snackbarRef.dismissWithAction()"
+  >
+    <mat-icon class="text-[var(--mdc-snackbar-supporting-text-color)]"
+      >close</mat-icon
+    >
+  </button>
+</span>

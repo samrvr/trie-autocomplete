@@ -1,0 +1,7 @@
+<button mat-icon-button (click)="themeService.switchTheme()">
+  @if (themeService.theme() === Theme.DARK) {
+  <mat-icon>sunny</mat-icon>
+  } @else {
+  <mat-icon>mode_night</mat-icon>
+  }
+</button>

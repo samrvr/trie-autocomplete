@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Enter your name"
+      [matAutocomplete]="auto"
+      [formControl]="name"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (option of options(); track option) {
+      <mat-option [value]="option | titlecase">{{
+        option | titlecase
+      }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
