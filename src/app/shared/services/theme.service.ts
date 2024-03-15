@@ -7,7 +7,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ThemeService {
   document = inject(DOCUMENT);
-  theme = signal<Theme>(Theme.LIGHT);
+  theme = signal<Theme>(Theme.DARK);
 
   constructor() {
     this.document.body.classList.add(this.theme());
