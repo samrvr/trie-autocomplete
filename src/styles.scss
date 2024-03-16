@@ -37,6 +37,10 @@ $light-theme: matx.define-theme(
       primary-container
     );
   }
+
+  .primary-container {
+    background-color: mat.get-theme-color($dark-theme, surface-container-high);
+  }
 }
 
 .light-theme {
@@ -49,6 +53,10 @@ $light-theme: matx.define-theme(
       $light-theme,
       primary-container
     );
+  }
+
+  .primary-container {
+    background-color: mat.get-theme-color($light-theme, surface-container-high);
   }
 }
 

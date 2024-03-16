@@ -1,19 +1,16 @@
-<form (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input
-      type="text"
-      matInput
-      placeholder="Enter your name"
-      [matAutocomplete]="auto"
-      [formControl]="name"
-    />
-    <mat-autocomplete #auto="matAutocomplete">
-      @for (option of options(); track option) {
-      <mat-option [value]="option | titlecase">{{
-        option | titlecase
-      }}</mat-option>
-      }
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+<div
+  class="w-[calc(100%-48px)] md:w-1/2 h-1/2 md:h-[calc(100%-48px)] md:py-6 md:px-12 px-6 m-6 primary-container rounded-2xl flex flex-col justify-center"
+>
+  <mat-icon class="mb-4 -mt-12 text-5xl !w-12 !h-12 opacity-70"
+    >newspaper</mat-icon
+  >
+  <h1 class="lg:!text-6xl md:!text-4xl !text-2xl !font-[475]">
+    Sign up for our newsletter
+  </h1>
+  <h2 class="md:!text-xl !text-lg !font-normal opacity-70">
+    Just enter your name, we will find your email
+  </h2>
+</div>
+<main class="flex items-center flex-1 p-6 md:justify-center">
+  <app-name-form></app-name-form>
+</main>
