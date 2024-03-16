@@ -37,17 +37,16 @@ export class NameFormComponent {
       .pipe(
         takeUntilDestroyed(),
         tap((name) => {
+          if (!name) {
+            this.options.set([]);
+            return;
+          }
           if (!name?.match(/^[a-zA-Z]+$/)) {
             this.name.setErrors({ nonLetters: true });
           }
-          if (name) {
-            this.options.set(
-              this.trieService.nameTrie().autoComplete(name.toLowerCase())
-            );
-          } else {
-            this.name.setErrors({ empty: true });
-            this.options.set([]);
-          }
+          this.options.set(
+            this.trieService.nameTrie().autoComplete(name.toLowerCase())
+          );
         })
       )
       .subscribe();

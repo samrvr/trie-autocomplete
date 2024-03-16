@@ -26,8 +26,11 @@ $light-theme: matx.define-theme(
   scrollbar-width: thin;
 }
 
-.dark-theme {
+html {
   @include mat.all-component-themes($dark-theme);
+}
+
+.dark-theme {
   scrollbar-color: mat.get-theme-color($dark-theme, secondary-container)
     transparent;
 
