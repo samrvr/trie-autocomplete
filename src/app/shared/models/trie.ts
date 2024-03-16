@@ -20,51 +20,46 @@ export class Trie {
     let currentNode = this.root;
 
     for (let i = 1; i < word.length; i++) {
-      if (currentNode.children.has(word[i])) {
-        if (i === word.length - 1) {
-          if (!currentNode.children.get(word[i])!.word) {
-            currentNode.children.get(word[i])!.word = word;
-          } else {
-            return new Error('Word exists already');
-          }
-        } else {
-          currentNode = currentNode.children.get(word[i])!;
-        }
+      const char = word[i];
+      const charNode = currentNode.children.get(char);
+      if (charNode) {
+        currentNode = charNode;
       } else {
-        if (i === word.length - 1) {
-          currentNode.children.set(word[i], new TrieNode(word[i], word));
-        } else {
-          currentNode.children.set(word[i], new TrieNode(word[i]));
-          currentNode = currentNode.children.get(word[i])!;
-        }
+        currentNode.children.set(char, new TrieNode(char));
+        currentNode = currentNode.children.get(char)!;
       }
     }
+
+    if (currentNode.word) {
+      return new Error('Word already exists');
+    }
+
+    currentNode.word = word;
     return word;
   }
 
   autoComplete(input: string): string[] {
-    let words: string[] = [];
     let currentNode = this.root;
     for (let i = 1; i < input.length; i++) {
-      if (currentNode.children.has(input[i])) {
-        currentNode = currentNode.children.get(input[i])!;
+      const char = input[i];
+      const charNode = currentNode.children.get(char);
+      if (charNode) {
+        currentNode = charNode;
       } else {
         return [];
       }
     }
-    let basket: TrieNode[] = [];
-    currentNode.children.forEach((child) => basket.push(child));
-    if (currentNode.word) {
-      words.push(currentNode.word);
-    }
-    for (const node of basket) {
-      if (node.word) {
-        words.push(node.word);
-      }
-      node.children.forEach((child) => basket.push(child));
-    }
+    const words = getCompletedWords(currentNode);
     return words;
   }
+}
+
+function getCompletedWords(node: TrieNode, words: string[] = []): string[] {
+  if (node.word) {
+    words.push(node.word);
+  }
+  node.children.forEach((child) => getCompletedWords(child, words));
+  return words;
 }
 
 export class TrieParent {
