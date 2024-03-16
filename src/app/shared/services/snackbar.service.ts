@@ -10,7 +10,7 @@ export class SnackbarService {
   private snackbar = inject(MatSnackBar);
 
   private options: MatSnackBarConfig = {
-    duration: 3500,
+    duration: 4500,
     horizontalPosition: 'right',
     verticalPosition: 'top',
   };
