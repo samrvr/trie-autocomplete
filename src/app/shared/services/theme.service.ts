@@ -10,6 +10,7 @@ export class ThemeService {
   theme = signal<Theme>(Theme.DARK);
 
   constructor() {
+    this.theme.set((localStorage.getItem('theme') as Theme) || Theme.DARK);
     this.document.body.classList.add(this.theme());
   }
 
@@ -17,5 +18,6 @@ export class ThemeService {
     this.document.body.classList.remove(this.theme());
     this.theme.set(this.theme() === Theme.DARK ? Theme.LIGHT : Theme.DARK);
     this.document.body.classList.add(this.theme());
+    localStorage.setItem('theme', this.theme());
   }
 }
