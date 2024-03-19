@@ -48,7 +48,6 @@ export class Trie {
       }
     }
     const words = getCompletedWords(currentNode, input);
-    console.log(words);
     return words;
   }
 

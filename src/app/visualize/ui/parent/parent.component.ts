@@ -66,8 +66,6 @@ export class ParentComponent implements OnInit {
     }
     // remove the empty element(the host)
     parentElement.removeChild(nativeElement);
-
-    console.log(this.getChildX(this.node()));
   }
 
   getChildrenAmount(node: TrieNode) {
@@ -160,7 +158,6 @@ export class ParentComponent implements OnInit {
   }
 
   onEnter() {
-    console.log('enter');
     this.highlightBranch(this);
     this.lowlightBranch(this);
   }

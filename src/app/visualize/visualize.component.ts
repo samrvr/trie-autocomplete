@@ -48,9 +48,4 @@ export class VisualizeComponent {
     freeMouseWheel: false,
     invertMouseWheel: true,
   });
-
-  constructor() {
-    console.log(this.trie().getNodesAtLevel(5));
-    console.log(this.trie().depth);
-  }
 }
