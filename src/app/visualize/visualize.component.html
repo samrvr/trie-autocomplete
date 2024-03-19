@@ -1,0 +1,62 @@
+<pan-zoom [config]="panZoomConfig">
+  <svg
+    [attr.width]="svgWidth()"
+    [attr.height]="svgHeight()"
+    attr.viewBox="0 0 {{ svgWidth() }} {{ svgHeight() }}"
+    preservingAspectRatio="none"
+    stroke-linecap="round"
+    class="border-2 border-gray-700 rounded-2xl"
+  >
+    <defs>
+      <marker
+        id="arrow"
+        viewBox="0 0 12 24"
+        refX="12"
+        refY="12"
+        markerWidth="24"
+        markerHeight="12"
+        orient="auto-start-reverse"
+        fill="transparent"
+        stroke-width="2"
+        [attr.stroke]="arrowColor"
+      >
+        <path d="M1,1 L12,12 M12,12 L1,23" />
+      </marker>
+      <marker
+        id="lowlight-arrow"
+        viewBox="0 0 12 24"
+        refX="12"
+        refY="12"
+        markerWidth="24"
+        markerHeight="12"
+        orient="auto-start-reverse"
+        fill="transparent"
+        stroke-width="2"
+        [attr.stroke]="lowArrowColor"
+      >
+        <path d="M1,1 L12,12 M12,12 L1,23" />
+      </marker>
+      <marker
+        id="highlight-arrow"
+        viewBox="0 0 12 24"
+        refX="12"
+        refY="12"
+        markerWidth="24"
+        markerHeight="12"
+        orient="auto-start-reverse"
+        fill="transparent"
+        stroke-width="2"
+        [attr.stroke]="highArrowColor"
+      >
+        <path d="M1,1 L12,12 M12,12 L1,23" />
+      </marker>
+    </defs>
+    <app-parent
+      [node]="trie().root"
+      [x]="0"
+      [y]="0"
+      [parent]="null"
+      [prefix]="''"
+    ></app-parent>
+  </svg>
+</pan-zoom>

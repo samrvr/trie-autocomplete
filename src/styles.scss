@@ -74,3 +74,13 @@ body {
 .mdc-snackbar__surface {
   padding-right: 4px !important;
 }
+
+.word.mat-mdc-tooltip .mdc-tooltip__surface {
+  font-weight: bold !important;
+  color: rgb(37, 71, 55);
+}
+
+// .mat-mdc-tooltip .mdc-tooltip__surface {
+//   font-size: 1rem !important;
+//   line-height: 1.25rem !important;
+// }

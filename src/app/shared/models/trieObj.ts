@@ -52,6 +52,46 @@ export class Trie {
     return words;
   }
 
+  getNodesAtLevel(level: number): TrieNode[] {
+    let nodes = [this.root];
+    for (let i = 0; i < level; i++) {
+      let temp: TrieNode[] = [];
+      for (let j = 0; j < nodes.length; j++) {
+        temp = temp.concat(Object.values(nodes[j].children));
+      }
+      nodes = temp;
+    }
+    return nodes;
+  }
+
+  get maxNodeWidth() {
+    let maxWidth = 0;
+    let nodes = [this.root];
+    while (nodes.length) {
+      let temp: TrieNode[] = [];
+      for (let j = 0; j < nodes.length; j++) {
+        temp = temp.concat(Object.values(nodes[j].children));
+      }
+      nodes = temp;
+      maxWidth = Math.max(maxWidth, nodes.length);
+    }
+    return maxWidth;
+  }
+
+  get depth() {
+    let depth = 0;
+    let nodes = [this.root];
+    while (nodes.length) {
+      let temp: TrieNode[] = [];
+      for (let j = 0; j < nodes.length; j++) {
+        temp = temp.concat(Object.values(nodes[j].children));
+      }
+      nodes = temp;
+      depth++;
+    }
+    return depth;
+  }
+
   toJSON() {
     return JSON.stringify(this.root);
   }

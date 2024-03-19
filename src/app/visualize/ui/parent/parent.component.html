@@ -1,0 +1,46 @@
+<svg:g
+  [matTooltip]="!node().value ? 'Root' : (prefix() + node().value | titlecase)"
+  [matTooltipClass]="node().word ? 'word' : 'word-fragment'"
+  matTooltipPosition="right"
+  class="node"
+  #nodeEl
+  (mouseenter)="onEnter()"
+  (mouseleave)="onLeave()"
+>
+  <circle
+    [attr.cx]="svgX()"
+    [attr.cy]="svgY()"
+    [attr.r]="nodeRadius"
+    [attr.fill]="nodeColor()"
+  ></circle>
+  <text
+    [attr.x]="svgX()"
+    [attr.y]="svgY()"
+    [attr.fill]="node().word ? wordTextColor : nodeTextColor"
+    text-anchor="middle"
+    alignment-baseline="middle"
+  >
+    {{ node().value || "rt" }}
+  </text>
+</svg:g>
+
+@for (child of node().children | keyvalue; track $index) {
+<svg:g class="arrow" #arrowEl>
+  <path
+    nodeArrow
+    [fromX]="svgX()"
+    [fromY]="svgY()"
+    [toX]="getChildX(child.value) * nodeGap + this.svgFullPadding"
+    [toY]="svgY() + nodeGap"
+    [toValue]="child.value.value"
+  ></path>
+</svg:g>
+<app-parent
+  #childEl
+  [node]="child.value"
+  [prefix]="prefix() + node().value"
+  [x]="getChildX(child.value)"
+  [y]="y() + 1"
+  [parent]="comp"
+></app-parent>
+}

@@ -1,0 +1,48 @@
+:host {
+  display: contents;
+}
+g {
+  &.highlight {
+    circle {
+      @apply fill-indigo-200;
+    }
+    text {
+      @apply fill-indigo-600;
+    }
+    path {
+      @apply stroke-slate-300;
+    }
+  }
+  &.lowlight {
+    circle {
+      @apply fill-indigo-950;
+    }
+    text {
+      @apply fill-indigo-400;
+    }
+    path {
+      @apply stroke-slate-400;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    circle {
+      @apply fill-slate-600;
+    }
+    text {
+      @apply fill-slate-200;
+    }
+  }
+
+  text {
+    font-weight: bold;
+    font-size: 32px;
+    font-family: Jetbrains Mono, monospace;
+  }
+  circle {
+    transition: all 0.15s ease-in-out;
+  }
+  path {
+    pointer-events: none;
+  }
+}
